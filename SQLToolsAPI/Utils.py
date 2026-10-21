@@ -13,7 +13,7 @@ import sqlparse
 
 # Regular expression for comments
 comment_re = re.compile(
-    '(^)?[^\S\n]*/(?:\*(.*?)\*/[^\S\n]*|/[^\n]*)($)?',
+    r'(^)?[^\S\n]*/(?:\*(.*?)\*/[^\S\n]*|/[^\n]*)($)?',
     re.DOTALL | re.MULTILINE
 )
 
@@ -44,7 +44,7 @@ def parseJson(filename):
         content = re.sub(r',([ \t\r\n]+)\]', r'\1]', content)
 
         # Return json file
-        return json.loads(content, encoding='utf-8')
+        return json.loads(content)
 
 
 def saveJson(content, filename):
